@@ -1,0 +1,30 @@
+{
+  "name": "html-dom-ext",
+  "version": "0.0.0",
+  "description": "Extensions and utilities related to HTML DOM interfaces",
+  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
+  "keywords": [
+    "html",
+    "dom",
+    "form"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/medikoo/html-dom-ext.git"
+  },
+  "dependencies": {
+    "dom-ext": "git://github.com/medikoo/dom-ext.git"
+  },
+  "devDependencies": {
+    "jsdom": "~3.0.2",
+    "tad": "~0.2.1",
+    "xlint": "~0.2.1",
+    "xlint-jslint-medikoo": "~0.1.2"
+  },
+  "scripts": {
+    "lint": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --no-cache --no-stream",
+    "lint-console": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --watch",
+    "test": "node node_modules/tad/bin/tad"
+  },
+  "license": "MIT"
+}
