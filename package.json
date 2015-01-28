@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "es5-ext": "~0.10.5",
-    "dom-ext": "git://github.com/medikoo/dom-ext.git"
+    "dom-ext": "git://github.com/medikoo/dom-ext.git",
+    "memoizee": "~0.3.8"
   },
   "devDependencies": {
     "jsdom": "~3.0.2",
