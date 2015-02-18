@@ -9,6 +9,7 @@ module.exports = function (t, a) {
 		a(t(document.createDocumentFragment()), false, "DocumentFragment");
 		a(t(document.createElement('div')), false, "Element");
 		a(t(document.createElement('td')), true);
+		a(t(document.createElement('th')), true);
 		a(t(document.createTextNode('content')), false, "Text node");
 		a(t(document.createComment('content')), false, "Comment node");
 		a(t(document), false, "Document node");

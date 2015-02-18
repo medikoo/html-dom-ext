@@ -6,4 +6,6 @@ module.exports = function (t, a) {
 	if (typeof document === 'undefined') return;
 	cell = document.createElement('td');
 	a(t(cell), cell);
+	cell = document.createElement('th');
+	a(t(cell), cell);
 };
