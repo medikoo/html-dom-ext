@@ -1,9 +1,10 @@
 'use strict';
 
-var object     = require('es5-ext/object/valid-object')
+var value      = require('es5-ext/object/valid-value')
   , anchor     = require('dom-ext/html-anchor-element/valid-html-anchor-element')
+  , resolve    = require('url3/resolve')
   , isExternal = require('../../lib/is-external');
 
-module.exports = function (location) {
-	return isExternal(object(location), anchor(this), this);
+module.exports = function (relUrl) {
+	return isExternal(value(relUrl), resolve(relUrl, anchor(this).href), this);
 };
