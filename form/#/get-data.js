@@ -34,20 +34,13 @@ module.exports = function () {
 			}
 			if (type === 'file') {
 				value = toArray(control.files);
-				if (!value.length) value = null;
-				else if (value.length === 1) value = value[0];
+				if (!value.length) return;
+				if (value.length === 1) value = value[0];
 			}
 		}
 		name = control.name;
 		if (data.hasOwnProperty(name)) {
-			if (value == null) return;
-			if (!isArray(data[name])) {
-				if (data[name] == null) {
-					data[name] = value;
-					return;
-				}
-				data[name] = [data[name]];
-			}
+			if (!isArray(data[name])) data[name] = [data[name]];
 			if (isArray(value)) push.apply(data[name], value);
 			else data[name].push(value);
 			return;
