@@ -22,6 +22,7 @@ module.exports = function () {
 				forEach.call(control.options, function (option) {
 					if (option.selected) value.push(option.value);
 				});
+				if (!value.length) return;
 			}
 		} else if (nodeName === 'input') {
 			type = control.getAttribute('type') || 'text';
