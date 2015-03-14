@@ -40,7 +40,13 @@ module.exports = function () {
 		name = control.name;
 		if (data.hasOwnProperty(name)) {
 			if (value == null) return;
-			if (!isArray(data[name])) (data[name] = [data[name]]);
+			if (!isArray(data[name])) {
+				if (data[name] == null) {
+					data[name] = value;
+					return;
+				}
+				data[name] = [data[name]];
+			}
 			if (isArray(value)) push.apply(data[name], value);
 			else data[name].push(value);
 			return;
