@@ -32,4 +32,4 @@ var getScripts = function (node) {
 	return result;
 };
 
-module.exports = exports = function (node) { getScripts(ensureParentNode(node)).forEach(reload); };
+module.exports = exports = function () { getScripts(ensureParentNode(this)).forEach(reload); };

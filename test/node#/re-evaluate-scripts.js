@@ -11,7 +11,7 @@ module.exports = function (t, a) {
 	));
 	div.appendChild(script);
 	a(div.firstChild, script);
-	t(div);
+	t.call(div);
 	a.not(div.firstChild, script);
 	a(div.firstChild.nodeName, 'SCRIPT');
 	a.deep(slice.call(div.childNodes, 1).map(function (node) { return node.data; }), ['X', 'X']);
