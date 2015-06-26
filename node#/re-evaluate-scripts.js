@@ -5,9 +5,11 @@
 'use strict';
 
 var aFrom            = require('es5-ext/array/from')
+  , ensureCallable   = require('es5-ext/object/valid-callable')
+  , ensureObject     = require('es5-ext/object/valid-object')
   , ensureParentNode = require('dom-ext/parent-node/ensure')
 
-  , forEach = Array.prototype.forEach, push = Array.prototype.push;
+  , forEach = Array.prototype.forEach, push = Array.prototype.push, create = Object.create;
 
 var reload = function (oldScript) {
 	var nuScript = oldScript.ownerDocument.createElement('script');
@@ -21,15 +23,26 @@ var reload = function (oldScript) {
 	oldScript.parentNode.removeChild(oldScript);
 };
 
-var getScripts = function (node) {
+var getScripts = function (node, ignoredSources, filter) {
 	if (node.getElementsByTagName) return aFrom(node.getElementsByTagName('script'));
 	var result = [];
 	forEach.call(node.childNodes, function (node) {
 		if (node.nodeType !== 1) return;
-		if (node.nodeName.toLowerCase() === 'script') result.push(node);
-		else push.apply(result, getScripts(node));
+		if (node.nodeName.toLowerCase() === 'script') {
+			if (node.src && ignoredSources[node.src]) return;
+			if (filter && !filter(node)) return;
+			result.push(node);
+			return;
+		}
+		push.apply(result, getScripts(node, ignoredSources, filter));
 	});
 	return result;
 };
 
-module.exports = exports = function () { getScripts(ensureParentNode(this)).forEach(reload); };
+module.exports = exports = function (/* options */) {
+	var options = Object(arguments[0]), filter;
+	var ignoredSources = (options.ignoredSources != null)
+		? ensureObject(options.ignoredSources) : create(null);
+	if (options.filter != null) filter = ensureCallable(options.filter);
+	getScripts(ensureParentNode(this), ignoredSources, filter).forEach(reload);
+};
