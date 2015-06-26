@@ -5,11 +5,12 @@
 'use strict';
 
 var aFrom            = require('es5-ext/array/from')
+  , includes         = require('es5-ext/array/#/includes')
   , ensureCallable   = require('es5-ext/object/valid-callable')
-  , ensureObject     = require('es5-ext/object/valid-object')
+  , ensureIterable   = require('es5-ext/iterable/validate-object')
   , ensureParentNode = require('dom-ext/parent-node/ensure')
 
-  , forEach = Array.prototype.forEach, push = Array.prototype.push, create = Object.create;
+  , forEach = Array.prototype.forEach, push = Array.prototype.push;
 
 var reload = function (oldScript) {
 	var nuScript = oldScript.ownerDocument.createElement('script');
@@ -29,7 +30,7 @@ var getScripts = function (node, ignoredSources, filter) {
 	forEach.call(node.childNodes, function (node) {
 		if (node.nodeType !== 1) return;
 		if (node.nodeName.toLowerCase() === 'script') {
-			if (node.src && ignoredSources[node.src]) return;
+			if (node.src && includes.call(ignoredSources, node.src)) return;
 			if (filter && !filter(node)) return;
 			result.push(node);
 			return;
@@ -42,7 +43,7 @@ var getScripts = function (node, ignoredSources, filter) {
 module.exports = exports = function (/* options */) {
 	var options = Object(arguments[0]), filter;
 	var ignoredSources = (options.ignoredSources != null)
-		? ensureObject(options.ignoredSources) : create(null);
+		? aFrom(ensureIterable(options.ignoredSources)) : [];
 	if (options.filter != null) filter = ensureCallable(options.filter);
 	getScripts(ensureParentNode(this), ignoredSources, filter).forEach(reload);
 };
