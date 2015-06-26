@@ -5,7 +5,7 @@
 'use strict';
 
 var aFrom            = require('es5-ext/array/from')
-  , includes         = require('es5-ext/array/#/includes')
+  , includes         = require('es5-ext/array/#/contains')
   , ensureCallable   = require('es5-ext/object/valid-callable')
   , ensureIterable   = require('es5-ext/iterable/validate-object')
   , ensureParentNode = require('dom-ext/parent-node/ensure')
