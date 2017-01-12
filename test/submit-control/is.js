@@ -18,7 +18,7 @@ module.exports = function (t, a) {
 		el.setAttribute('type', 'text');
 		a(t(el), false);
 		el = document.createElement('button');
-		a(t(el), false);
+		a(t(el), true);
 		el.setAttribute('type', 'submit');
 		a(t(el), true);
 		el.setAttribute('type', 'button');
