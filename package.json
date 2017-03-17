@@ -1,6 +1,6 @@
 {
   "name": "html-dom-ext",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Extensions and utilities related to HTML DOM interfaces",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
@@ -13,9 +13,9 @@
     "url": "git://github.com/medikoo/html-dom-ext.git"
   },
   "dependencies": {
-    "es5-ext": "^0.10.12",
-    "dom-ext": "0.0.3",
-    "memoizee": "^0.4.1",
+    "es5-ext": "^0.10.14",
+    "dom-ext": "0.1",
+    "memoizee": "^0.4.4",
     "url3": "1"
   },
   "devDependencies": {
