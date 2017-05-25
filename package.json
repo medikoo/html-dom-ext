@@ -13,9 +13,9 @@
     "url": "git://github.com/medikoo/html-dom-ext.git"
   },
   "dependencies": {
-    "es5-ext": "^0.10.14",
-    "dom-ext": "0.1",
-    "memoizee": "^0.4.4",
+    "es5-ext": "^0.10.21",
+    "dom-ext": "^0.1.3",
+    "memoizee": "^0.4.5",
     "url3": "1"
   },
   "devDependencies": {
