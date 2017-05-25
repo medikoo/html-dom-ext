@@ -1,6 +1,6 @@
 {
   "name": "html-dom-ext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extensions and utilities related to HTML DOM interfaces",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
