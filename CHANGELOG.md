@@ -9,3 +9,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * ensure to emit reset event ([eac6425](https://github.com/medikoo/html-dom-ext/commit/eac6425))
+
+## Old Changelog
+
+See `CHANGES` document
